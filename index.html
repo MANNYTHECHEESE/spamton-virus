@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BIG SHOT VIRUS</title>
+    <style>
+        body {
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #target {
+            width: 300px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        #target:hover {
+            transform: scale(1.1);
+            filter: hue-rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+
+    <img id="target" src="spamton.png" alt="CLICK ME [TO BE BIG SHOT]" onclick="launchVirus()">
+    <audio id="bgm" src="music.mp3" loop></audio>
+
+    <script>
+        function launchVirus() {
+            document.getElementById("bgm").play();
+            openRealWindow();
+            setInterval(openRealWindow, 2000);
+        }
+
+        function openRealWindow() {
+            const w = 400;
+            const h = 400;
+            const left = Math.random() * (screen.width - w);
+            const top = Math.random() * (screen.height - h);
+            
+            const newWin = window.open("https://deltarune.com", "_blank", "width=" + w + ",height=" + h + ",left=" + left + ",top=" + top + ",menubar=no,status=no,toolbar=no");
+            
+            if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
+                alert("PLEASE ENABLE Pop-ups TO BE A BIG SHOT");
+            }
+        }
+    </script>
+</body>
+</html>
